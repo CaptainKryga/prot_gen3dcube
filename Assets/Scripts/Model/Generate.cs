@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Generate : MonoBehaviour
+namespace Model
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Generate : MonoBehaviour
     {
+        [SerializeField] private Transform startPoint;
+        [SerializeField] private Cube prefabCube;
         
-    }
+        private float delay = 1, time;
+        private float speed = 1;
+        private float distance = 5;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public float Delay { set => delay = value; }
+        public float Speed { set => speed = value; }
+        public float Distance { set => distance = value; }
         
+        private void Update()
+        {
+            time -= Time.deltaTime;
+
+            if (time < 0)
+            {
+                GenerateNewCube();
+                time = delay;
+            }
+        }
+
+        private void GenerateNewCube()
+        {
+            Cube cube = Instantiate(prefabCube, startPoint.position, Quaternion.identity);
+            cube.Init(distance, speed);
+        }
     }
 }

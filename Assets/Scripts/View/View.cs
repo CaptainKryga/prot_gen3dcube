@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class View : MonoBehaviour
+namespace View
 {
-    // Start is called before the first frame update
-    void Start()
+    public class View : MonoBehaviour
     {
+        [SerializeField] private Controller.Controller controller;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        public void OnInputField_SetDelay(string str)
+        {
+            float delay = float.Parse(str);
+            controller.UpdateDelay(delay);
+        }
         
+        public void OnInputField_SetSpeed(string str)
+        {
+            float speed = float.Parse(str);
+            controller.UpdateDelay(speed);
+        }
+        
+        public void OnInputField_SetDistance(string str)
+        {
+            float distance = float.Parse(str);
+            controller.UpdateDelay(distance);
+        }
     }
+    
 }

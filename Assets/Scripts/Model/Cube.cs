@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Cube : MonoBehaviour
+namespace Model
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Cube : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private MeshRenderer mr;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private float speed;
+        private Vector3 endPoint;
+
+        private void Start()
+        {
+            mr.material.color = Random.ColorHSV();
+        }
+
+        public void Init(float speed, float distance)
+        {
+            this.speed = speed;
+
+            endPoint = transform.position + Vector3.forward * distance;
+        }
         
+        private void Update()
+        {
+            Vector3.MoveTowards(transform.position, endPoint, speed);
+            
+            if (transform.position == endPoint)
+                Destroy(gameObject);
+        }
     }
 }

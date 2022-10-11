@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+namespace Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Controller : MonoBehaviour
     {
+        [SerializeField] private Model.Model model;
+        public void UpdateDelay(float delay)
+        {
+            model.UpdateDelay(delay);
+        }
         
-    }
+        public void UpdateSpeed(float speed)
+        {
+            model.UpdateSpeed(speed);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void UpdateDistance(float distance)
+        {
+            model.UpdateDistance(distance);
+        }
     }
 }
