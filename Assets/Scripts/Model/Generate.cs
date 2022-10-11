@@ -11,7 +11,17 @@ namespace Model
         private float speed = 1;
         private float distance = 5;
 
-        public float Delay { set => delay = value; }
+        public float Delay
+        {
+            set
+            {
+                delay = value;
+
+                if (time > delay)
+                    time = delay;
+            }
+        }
+
         public float Speed { set => speed = value; }
         public float Distance { set => distance = value; }
         
