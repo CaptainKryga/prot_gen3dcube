@@ -7,8 +7,8 @@ namespace Model
     {
         [SerializeField] private MeshRenderer mr;
 
-        private float speed;
-        private Vector3 endPoint;
+        [SerializeField] private float speed;
+        [SerializeField] private Vector3 endPoint;
 
         private void Start()
         {
@@ -24,7 +24,7 @@ namespace Model
         
         private void Update()
         {
-            Vector3.MoveTowards(transform.position, endPoint, speed);
+            transform.position = Vector3.MoveTowards(transform.position, endPoint, speed * Time.deltaTime);
             
             if (transform.position == endPoint)
                 Destroy(gameObject);

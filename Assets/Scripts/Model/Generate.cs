@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace Model
 {
     public class Generate : MonoBehaviour
     {
-        [SerializeField] private Transform startPoint;
+        [SerializeField] private Transform startPoint, parent;
         [SerializeField] private Cube prefabCube;
         
         private float delay = 1, time;
@@ -29,8 +28,8 @@ namespace Model
 
         private void GenerateNewCube()
         {
-            Cube cube = Instantiate(prefabCube, startPoint.position, Quaternion.identity);
-            cube.Init(distance, speed);
+            Cube cube = Instantiate(prefabCube, startPoint.position, Quaternion.identity, parent);
+            cube.Init(speed, distance);
         }
     }
 }

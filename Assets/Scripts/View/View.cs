@@ -15,13 +15,13 @@ namespace View
         public void OnInputField_SetSpeed(string str)
         {
             float speed = float.Parse(str);
-            controller.UpdateDelay(speed);
+            controller.UpdateSpeed(speed);
         }
         
         public void OnInputField_SetDistance(string str)
         {
             float distance = float.Parse(str);
-            controller.UpdateDelay(distance);
+            controller.UpdateDistance(distance);
         }
     }
     
